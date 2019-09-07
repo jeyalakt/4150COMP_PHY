@@ -85,7 +85,7 @@ int main(int argc, char *argv[]){
             cout << setiosflags(ios::showpoint | ios::uppercase);
                 // cout << setprecision(10) << setw(20) << "Time used  for  computation=" << finish << endl;
                 // cout << setprecision(10) << setw(20) << "Time used  for  computation=" << start << endl;
-                 cout << setprecision(10) << setw(20) << "Time used  for  computation=" << timeused << endl;
+                // cout << setprecision(10) << setw(20) << "Time used  for  computation=" << timeused << endl;
       // Now open file and write out results
       ofile.open(fileout);
       ofile << setiosflags(ios::showpoint | ios::uppercase);
