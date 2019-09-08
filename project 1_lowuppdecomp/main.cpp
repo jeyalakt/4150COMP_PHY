@@ -74,7 +74,8 @@ int main(int argc, char *argv[]){
         ofile << setw(15) << setprecision(8) << log10(RelativeError) << endl;
       }
       ofile.close();
-      // cout << setprecision(10) << setw(20) << "Time used  for  computation=" << timeused << endl;
+      cout << setprecision(10) << setw(20) << "Time used  for  computation=" << timeused << endl;
     }
     return 0;
 }
+
