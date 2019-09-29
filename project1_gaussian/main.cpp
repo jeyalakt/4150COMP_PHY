@@ -38,6 +38,7 @@ int main(int argc, char *argv[]){
       string argument = to_string(i);
       // Final filename as filename-i-
       fileout.append(argument);
+      fileout.append(".txt");
       double h = 1.0/(n);
       double hh = h*h;
       // Set up arrays for the simple case

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.7)  9 SEP 2019 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.9.7)  12 SEP 2019 20:41
 entering extended mode
 **"./project 1 report.tex"
 ("project 1 report.tex"
@@ -160,44 +160,121 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen107
 \Gin@req@width=\dimen108
 )
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen109
+))
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen110
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count98
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count99
+\leftroot@=\count100
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count101
+\DOTSCASE@=\count102
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen111
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count103
+\c@MaxMatrixCols=\count104
+\dotsspace@=\muskip11
+\c@parentequation=\count105
+\dspbrk@lvl=\count106
+\tag@help=\toks18
+\row@=\count107
+\column@=\count108
+\maxfields@=\count109
+\andhelp@=\toks19
+\eqnshift@=\dimen112
+\alignsep@=\dimen113
+\tagshift@=\dimen114
+\tagwidth@=\dimen115
+\totwidth@=\dimen116
+\lineht@=\dimen117
+\@envbody=\toks20
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 ("C:\Program Files\MiKTeX 2.9\tex/latex/natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip44
-\bibsep=\skip45
+\bibhang=\skip47
+\bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count98
+\c@NAT@ctr=\count110
 )
-("project 1 report.aux")
+("project 1 report.aux"
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+)
 \openout1 = `"project 1 report.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-\AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 17.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 16.
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 ("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count99
+\c@section@level=\count111
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
 
 ("project 1 report.out") ("project 1 report.out")
 \@outlinefile=\write3
@@ -206,17 +283,17 @@ LaTeX Info: Redefining \nameref on input line 17.
 
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen109
-\scratchbox=\box28
-\nofMPsegments=\count101
-\nofMParguments=\count102
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen110
-\MPnumerator=\count104
-\makeMPintoPDFobject=\count105
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count112
+\scratchdimen=\dimen118
+\scratchbox=\box30
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen119
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
+\everyMPtoPDFconversion=\toks23
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -230,54 +307,104 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 20.
- [1
+LaTeX Font Info:    Try loading font information for U+msa on input line 19.
 
-{C:/Users/Bruker/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 
-Package natbib Warning: Citation `adams1995hitchhiker' on page 2 undefined on i
-nput line 55.
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
+{C:/Users/Bruker/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+<./images/gaussop1.jpg, id=79, 433.62pt x 289.08pt>
+File: ./images/gaussop1.jpg Graphic file (type jpg)
+<use ./images/gaussop1.jpg>
+Package pdftex.def Info: ./images/gaussop1.jpg  used on input line 158.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Overfull \hbox (88.61894pt too wide) in paragraph at lines 158--160
+ [][] 
+ []
+
+<./images/gaussop2.jpg, id=80, 433.62pt x 289.08pt>
+File: ./images/gaussop2.jpg Graphic file (type jpg)
+<use ./images/gaussop2.jpg>
+Package pdftex.def Info: ./images/gaussop2.jpg  used on input line 162.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Overfull \hbox (88.61894pt too wide) in paragraph at lines 162--164
+ [][] 
+ []
+
+<./images/gaussop3.jpg, id=81, 433.62pt x 289.08pt>
+File: ./images/gaussop3.jpg Graphic file (type jpg)
+<use ./images/gaussop3.jpg>
+Package pdftex.def Info: ./images/gaussop3.jpg  used on input line 166.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Overfull \hbox (88.61894pt too wide) in paragraph at lines 166--168
+ [][] 
+ []
+
+<./images/gaussop4.jpg, id=82, 433.62pt x 289.08pt>
+File: ./images/gaussop4.jpg Graphic file (type jpg)
+<use ./images/gaussop4.jpg>
+Package pdftex.def Info: ./images/gaussop4.jpg  used on input line 170.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Overfull \hbox (88.61894pt too wide) in paragraph at lines 170--172
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 753.09491pt on input line 174.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3]
 No file "project 1 report".bbl.
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
-[2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 201.
+[4] [5 <./images/gaussop1.jpg> <./images/gaussop2.jpg> <./images/gaussop3.jpg> 
+<./images/gaussop4.jpg>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 201.
  ("project 1 report.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 201.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 201.
 Package rerunfilecheck Info: File `"project 1 report".out' has not changed.
-(rerunfilecheck)             Checksum: 9B25DB63D55D01DB541250FA9E5999AB;331.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
+(rerunfilecheck)             Checksum: 2E8F1D7E91D3FAE551C11F89920F75F1;561.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 201.
  ) 
 Here is how much of TeX's memory you used:
- 5354 strings out of 492895
- 78791 string characters out of 3133477
- 168613 words of memory out of 3000000
- 9243 multiletter control sequences out of 15000+200000
- 7756 words of font info for 28 fonts, out of 3000000 for 9000
+ 6290 strings out of 492895
+ 89472 string characters out of 3133477
+ 183786 words of memory out of 3000000
+ 10112 multiletter control sequences out of 15000+200000
+ 12278 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,6n,28p,489b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,7n,28p,489b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmtt10.pfb>
-Output written on "project 1 report.pdf" (2 pages, 92767 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmu10.pfb>
+Output written on "project 1 report.pdf" (5 pages, 262918 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

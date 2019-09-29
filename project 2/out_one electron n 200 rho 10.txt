@@ -1,0 +1,2 @@
+n 	 Rho_max	 exe time_jacobi	 exe_time_linealg fn	 no.of transformations	 first three eigen values
+200	10	1989.063879	0.046801	68352	2.999232	6.996112	10.990485
