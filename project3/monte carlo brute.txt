@@ -1,1 +1,0 @@
-n 	 a	  b	  legrendre_resutlt	 exact_result	 realtive error	 sigma	 exe time_legrendre
