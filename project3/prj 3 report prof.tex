@@ -1,0 +1,468 @@
+\documentclass[9pt,a4paper,titlepage]{article}
+\usepackage{latexsym}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{booktabs,caption,amsfonts,amssymb,fancyhdr, amsmath}
+\usepackage[english]{babel}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{float}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{listings}
+\graphicspath{ {./images/} }
+
+\lstset{language=python}
+\lstset{backgroundcolor=\color{white}}
+\lstset{frame=single}
+\lstset{stringstyle=\ttfamily}
+\lstset{keywordstyle=\color{red}\bfseries}
+\lstset{commentstyle=\itshape\color{blue}}
+
+\begin{document}
+
+\begin{center}
+
+{\LARGE \bfseries FYS 4150-Computational Physics-Project 3\par}
+\vspace{0.5cm}
+{\LARGE \bfseries Computation of the ground state correlation energy between two electrons in a helium atom \par}
+\vspace{0.5cm}
+{ \bfseries Jeyalakshmi Thoppe Subramanian }
+\\
+\vspace{0.5cm}
+{\bfseries October 2019}
+\end{center}
+\begin{center}
+\hrule height 2 pt
+\end{center} 
+
+\section{Abstract}
+This project aims at computation of the ground state correlation energy between two electrons in a helium atom numerically as a six-dimensional integral . This task is attempted and achieved  with different methods, namely: numerical methods like Gauss-Legendre quadrature, Gauss-Laguerre quadrature and with statistical sampling method like  Monte Carlo method (brute force Monte Carlo  and monte carlo with importance sampling). The results are then compared and discussed. The code was checked for time improvement with parallelization aspect.The python code and results are is provided at  final programs and final results folders at 
+\url{https://github.com/jeyalakt/4150COMP_PHY/tree/master/project3}
+ 
+\section{Description of the problem}
+
+We approximate the wave function for two electrons in the helium atom with the product of the two single-particle hydrogen-like wave function:
+\begin{equation}
+\Psi({\bf r}_1,{\bf r}_2) = e^{-\alpha (r_1+r_2)}
+\end{equation}
+Here the normalisation factor is not considered for this project. 
+We then want to compute the expectation value for the Coulomb interaction energy:
+\begin{equation}\label{eq:correlationenergy}
+   \langle \frac{1}{|{\bf r}_1-{\bf r}_2|} \rangle =
+   \int_{-\infty}^{\infty} d{\bf r}_1d{\bf r}_2  e^{-2\alpha (r_1+r_2)}\frac{1}{|{\bf r}_1-{\bf r}_2|}.
+\end{equation}
+This integral can be solved analytically, resulting in $\frac{5\pi^{2}}{16^{2}}$. In the following analysis we will compare our results with this value.
+
+Concept of multidimensional integral with integral basics\cite{book1} with Gaussian quadratures such as Legendre and Laguerre are used to compute the integral.
+Then the statistical simulation method Monte carlo method in brute force form and with importance sampling  is used to compute the integral
+\subsection{Gauss Legendre quadrature}
+
+At first  Gauss-Legendre quadrature\cite{book2} was applied to compute the integral. We will now use a set of orthonormal polynomials \cite{book2}\cite{book3} (e.g. Legendre, Laguerre...) , defined on the interval $[a,b]$, where $a$, $b$ could also be $\pm \infty$. We now want to approximate our function with a polynomial of order $2N-1$, so
+\begin{equation} 
+\int_{a}^{b}f(x)dx \approx \int_{a}^{b}P_{2N-1}(x)dx = \sum_{i=1}^{N} w_i P_{2N-1}(x_i) \simeq \sum_{i=1}^{N} w_i f(x_i)=\sum_{i=1}^{N} \tilde{w}_i g(x_i)
+\end{equation}
+with $f(x)=W(x)g(x)$, $\tilde{w}_i =w_i W(x_i)$ and $x_i$ zeros of the orthogonal polynomials connected with the weight function $W(x)$.
+\\Different integration intervals lead to different choices for the set of orthogonal polynomials and consequently to different weights $W(x_{k})$ and different functions $g(x)$.
+\subsubsection{Legendre Polynomials } When the integration interval spans over a finite interval $[a,b]$ we use a particular set of orthogonal polynomials: Legendre Polynomials. 
+\\Legendre  polynomials are defined over $[-1,1]$ and for these polynomials the weight functions are:
+\begin{equation} 
+W(x)= 1
+\end{equation}
+and the following orthogonality conditions holds for $m\neq n$:
+\begin{equation}
+\int_{-1}^{1}  L_{m}(x) L_{n}(x) dx=0
+\end{equation}
+and for $m=n$ the normality condition holds:
+\begin{equation}
+\int_{-1}^{1} \big(L_{n}(x)\big) ^2 dx=\frac{2}{2n+1}
+\end{equation}
+Finally Legendre polynomials can be defined in a recursive way: 
+\begin{equation}
+\textbf{L}_{0}(x)=1, \  
+(j+1)\textbf{L}_{j+1}(x)+j\textbf{L}_{j-1}(x)-(2j+1)x\textbf{L}_{j}(x)=0.
+\end{equation}
+For evaluating the integral we approximate the function $f(x) \approx P_{2N-1}(x)$ and given the orthonormality of the Legendre Polynomials we can decompose the former polynomial as $$P_{2N-1}(x)=L_{N}(x)P_{N-1}(x)+Q_{N-1}(x)$$ 
+Since the polynomial $P_{N-1}(x)$ can also be decomposed in terms of these orthonormal polynomials of degree $1$, $2$, ... $N-2$, $N-1$: 
+\begin{equation}
+P_{N-1}(x)=\sum_{k=0}^{N-1} \alpha_{k}L_{k}(x)
+\end{equation}
+we obtain:
+\begin{equation}
+\int_{a}^{b} P_{2N-1}(x)dx=\int_{a}^{b}(L_{N}(x)P_{N-1}(x)+Q_{N-1}(x))dx=\int_{a}^{b}Q_{N-1}(x)dx.
+\end{equation}
+Moreover, when $x$ equals one of the $N$ roots of $L_{N}$ we have $P_{2N-1}(x_{k})=Q_{N-1}(x_{k})$ exactly. We also note that evaluating our function $f(x)$ in these points, we obtain $N$ independent values which fully define the polynomial $Q_{N-1}$. Therefore, we will choose these points as mesh points.
+Our aim now is to estimate our integral as 
+\begin{equation}
+\int_{a}^{b}f(x)dx \approx \int_{a}^{b}Q_{N-1}(x)dx \approx \sum_{k=1}^{N} \omega(x_{k})f(x_k)
+\end{equation}
+for some weights $w(x_k)$. In this case the integration interval is $[a,b]$, where $a,b$ $\in \mathbb{R}$ and it can be easily transformed into the interval $[-1,1]$ via a simple substitution $y=-1+\frac{2(x-a)}{b-a}$. It will be shown that such a choice leads to straight-forward calculations.
+
+Turning back to equation (9), our following task is to develop $Q_{N-1}(x)$ in terms of Legendre polynomials: $Q_{N-1}(x) = \sum_{i=0}^{N-1}\alpha_{i}L_{i}$. Now, since $L_0(x)=1$ we get 
+\begin{equation}
+\int_{-1}^{1}Q_{N-1}(x)dx=\sum_{i=0}^{N-1}\alpha_{i}\int_{-1}^{1}L_{0}(x)L_{i}(x)dx=2\alpha_{0}
+\end{equation}
+due to orthonormality relations.
+\\Defining the matrix $\textbf{L}$ as the matrix of the coefficients of Legendre polynomials and $\boldsymbol\alpha$ as the vector of the projection of the polynomial $\textbf{Q} _{N-1}$ along the $i$-th Legendre polynomial, the following relation holds:
+\begin{equation}
+\textbf{Q} _{N-1}(x_{k})=\textbf{L}\boldsymbol\alpha
+\end{equation}
+hence
+\begin{equation}
+\textbf{L} ^{-1}\textbf{Q} _{N-1}(x_{k})=\boldsymbol\alpha
+\end{equation}
+from equations (11) and (13), we get:
+\begin{equation}
+\int_{-1}^{1}f(x)dx\approx \sum_{i=0}^{N-1}\omega_{i}f(x_{i})
+\end{equation}
+where $x_{i}$ are the zeros of the Legendre polynomial of degree $N$ and the vector of the weights is $$\tilde{w_i}=2(\textbf{L}^{-1})_{0i}$$. 
+
+So, we first need to calculate the nodes and the weights and use them  for integral evaluations, which greatly speeds up the calculation compared to simple integration methods as Simpons rule, rectangule rule and trapezoidal rule
+
+Legendre polynomials are defined by the following recursive rule:
+
+$$P_0(x)=1$$
+
+$$P_1(x)=x$$
+
+$$nP_n(x)=(2n-1)xP_{n-1}x-(n-1)P_{n-2}x$$
+
+
+The recursive equation for their derivative are:
+
+$$P'_n(x)=\frac{n}{x^2-1}(xP_n(x)-P_{n-1}(x))$$
+
+The roots of those polynomials are in general not analytically solvable, so they have to be approximated numerically, for example by Newton-Raphson iteration:
+
+$$x_{n+1}=x(n)-\frac{f(x_n)}{f'(x_n)}$$
+
+The first guess $ x_{0}$ for the i-th root of a  -order polynomial $ P_{n}$ can be given by
+$$x_0=\cos(\pi*\frac{i-\frac{1}{4}}{n+\frac{1}{2}})$$
+
+After we get the nodes $ x_{i}$, we compute the appropriate weights by:
+
+$$w_i=\frac{2}{(1-x_i^2)(P'_n(x_i))^2}$$
+
+
+once we have the nodes and the weights for a n-point quadrature rule, we can approximate an integral over any interval ${\displaystyle [a,b]} $ by
+
+\begin{equation}
+\int_{a}^{b} f(x)dx\approx \frac{b-a}{2}\sum_{i=1}^{n}w(i)f( \frac{b-a}{2}x_i + \frac{a+b}{2})
+\end{equation}
+
+In the given equation  2 ,  
+$$r_i=x_ie_x+y_ie_y+z_ie_z$$
+
+and $r_i=\sqrt{x_i^2+y_i^2+z^2} $
+
+so the component $\frac{1}{|{r_1-r_2}|}$ is calculated as vector distane between in this case $r_1$ and $r_2$
+
+
+The interval values of a and b are first taken as -1 and 1 and as per the  hint given in the project, the single-particle wave function
+$e^{-\alpha (r_i)}$
+is more or less zero at $r_i \approx\lambda$
+the intervals are replaced with $\lambda$ values in this case $[-5,5]$.
+
+\subsection{Gauss Laguarre Quadrature }
+
+The Legendre polynomials \cite{book2} \cite{book3} are defined for x $\in [-1,1]$ and The gauss legendre quadrature  gave a ad hoc procedure. The results can be improved by changing the coordinate system and apply the Laguerre polynomials. The Laguerre polynomials are defined for x $\in [0,\infty]$ and if we change to spherical
+coordinates
+\begin{equation}
+\,dr_1dr_2=r_1^2dr_1 r_2^2dr_2 d \cos(\theta_1) d\cos(\theta_2)d\phi_1d\phi_2
+\end{equation}
+with 
+\begin{equation}
+\frac{1}{|{r1-r2}|}= \frac{1}{\sqrt{r_1^2+r_2^2-2r_1r_2\cos(\beta)}}
+\end{equation}
+
+where
+\begin{equation}
+\cos(\beta)=cos(\theta_1)cos(\theta_2)+\sin(\theta_1)\sin(\theta_2)cos(\phi_1-\phi_2)
+\end{equation}
+
+our integral is now given by 
+
+\begin{equation}
+\int_{0}^{\infty} r_1^2dr_1\int_{0}^{\infty} r_2^2dr_2\int_{0}^{\pi}d\cos{\theta_1}\int_{0}^{\pi}d\cos{\theta_2}\int_{0}^{2\pi} d\phi_1\int_{0}^{2\pi} d\phi_2\frac{exp{-2\alpha({r_1+r_2})}}{r_{12}}
+\end{equation}
+
+For the angles we need to perform the integrations over $\theta _i∈[0,\pi] $ and $\phi_i∈[0,2\pi]$. For the radial part we use
+Gauss-Laguerre taking properly care of the integrands involving the  $r_i^2\exp{−2\alpha r_i}$ terms.
+
+
+The following section explains the Gauss Laguerre quadrature in detail
+
+In Gauss Laguerre polynomial the weight function in eqn 1 absorbs the exponential function $e(\alpha x)$
+we rewrite eqn 1 as
+
+\begin{equation}
+\int_{0}^{\infty} f(x)dx=\int_{0}^{\infty} W(x)g(x)dx
+\end{equation}
+
+
+\subsubsection{Laguerre polynomials} When the integration interval spans over an infinite interval, we need a different set of orthogonal polynomials. 
+\\Laguerre polynomials are defined over $[0,\infty]$ and for these polynomials the weight functions are:
+\begin{equation} 
+W(x)= x^\alpha e^{-x}
+\end{equation}
+and the following orthogonality conditions holds for $m\neq n$:
+\begin{equation}
+\int_{0}^{\infty} x^\alpha e^{-x} G_{m}^\alpha(x)G_{n}^\alpha(x)dx=0
+\end{equation}
+and for $m=n$ the normality condition holds:
+\begin{equation}
+\int_{0}^{\infty} x^\alpha e^{-x} (G_{n}^\alpha(x))^2 dx=\frac{(n+\alpha)!}{n!}
+\end{equation}
+
+As before we want to find the weights $\tilde{w}_i$ of equation (3). Then
+\begin{equation} 
+\int_{0}^{\infty}f(x)dx = \int_{0}^{\infty}W(x)g(x)dx \approx\int_{0}^{\infty}W(x)P_{2N-1}(x)dx= \int_{0}^{\infty}W(x) \Big( G_{N}^\alpha(x)P_{N-1}(x)+Q_{N-1}(x) \Big) dx
+\end{equation}
+now the first factor of the former integral:
+\begin{equation} 
+\int_{0}^{\infty}W(x)G_{N}^\alpha(x)P_{N-1}(x)dx=\int_{0}^{\infty} x^\alpha e^{-x} G_{N}^\alpha(x)P_{N-1}(x)dx=0
+\end{equation}
+for the normalization condition of Laguerre polynomials. Now if we decompose Q with these polynomials: $Q_{N-1}(x)=\sum_{k=1}^{N-1}\beta_k G_k^\alpha(x)$
+then we get
+\begin{equation} 
+\int_{0}^{\infty}f(x)dx \approx \int_{0}^{\infty}W(x)Q_{N-1}(x)dx=\sum_{k=1}^{N-1}\beta_k \int_{0}^{\infty} x^\alpha e^{-x}G_k^\alpha(x)G_0^\alpha(x)=\alpha! \beta_0 
+\end{equation}
+Defining the matrix $\textbf{G}$ as the matrix of the coefficients of Legendre polynomials and $\boldsymbol\beta$ as the vector of the projection of the polynomial $\textbf{Q} _{N-1}$ along the $i$-th Laguerre polynomial, the following relation holds:
+\begin{equation}
+\textbf{Q} _{N-1}(x_{k})=\textbf{G}\boldsymbol\beta
+\end{equation}
+hence
+\begin{equation}
+\textbf{G} ^{-1}\textbf{Q} _{N-1}(x_{k})=\boldsymbol\beta
+\end{equation}
+finally, exploiting both equation (20) and (22), we get:
+\begin{equation}
+\int_{0}^{\infty}f(x)dx\approx \sum_{i=0}^{N-1}\tilde{w}_if(x_{i})
+\end{equation}
+where $x_{i}$ are the zeros of the Laguerre polynomial of degree $N$ and the vector of the weights is \begin{equation}
+\tilde{w}_i=\alpha!(\textbf{G}^{-1})_{0i}
+\end{equation}
+
+\subsection{Monte Carlo method}
+ Monte Carlo method is a statistical simulation method which is widely used to calculate multidimensional integral. 
+Statistical simulation methods may be contrasted to conventional numerical discretization methods, which are typically applied to ordinary or partial differential equations that describe some underlying physical or mathematical system. In many applications of Monte Carlo, the physical process is simulated directly, only requirement is that the physical (or mathematical) system be described by probability distribution functions (PDF’s). Once the PDF’s are known, the Monte Carlo simulation \cite{book4} can proceed by random sampling from
+the PDF’s. 
+
+ In its simplest form, i.e. when the integration interval is $[0,1]$ and a brute force Monte Carlo method is applied, it consists in computing
+\begin{equation}
+\langle f \rangle= \frac{1}{N} \sum_{i=1}^{N}f(x_{1})p(x_{i})
+\end{equation}
+where $p(x_{i})$ is the uniform distribution and the points $x_{i}$ are random generated via functions as \texttt{random.uniform()}...
+This method can be easily applied also to integrals which domain is in the form: $[a,b]$ via a change of variable.
+Assuming that $f(x_{i})$ are independent, i.e. that our evaluating points $x_{i}$ are really randomly chosen, the variance reads:
+\begin{equation}
+\sigma^{2}_{N} \approx \frac{1}{N} (\langle f^{2} \rangle-\langle f \rangle^{2})= \frac{\sigma^{2}_{f}}{N}
+\end{equation}
+hence $\sigma_{N}\approx\frac{1}{\sqrt{N}}$.
+Monte Carlo method is faster for higher dimension integrals.
+\paragraph{Improved Monte Carlo Method}
+Monte Carlo method can be improved with a slightly better approach: instead of picking random points in the integration multidimensional interval, it is advisable to collect more data where the value of the function value is higher. To achieve that, let $p(y)$ be a PDF whose profile resembles the function to be integrated (apart fron a scaling factor). The normalisation condition is 
+\begin{equation}
+I=\int_{a}^{b}f(y)dy=\int_{a}^{b}p(y)\frac{f(y)}{p(y)}dy
+\end{equation}
+
+which  resembles our given task of  evaluation of the energy for a quantum mechanical system
+And, performing a change of variable x $\rightarrow$ y (since random numbers are generated $[0,1]$:
+\begin{equation}
+x(y)=\int_{a}^{y}p(y')dy'
+\end{equation}
+we obtain 
+\begin{equation}
+I=\int_{0}^{1}\frac{f(y(x))}{p(y(x))}dx
+\end{equation}
+Now we do plain Monte Carlo integration on the new function $\frac{f(y(x))}{p(y(x))}$,  i.e to pick random points around the integration domain. 
+\paragraph{exponential distribution}
+
+if 
+p(y) = exp(−y),
+which is the exponential distribution, like the problem of energy state under consideration and  p(x) is given by the uniform distribution with x ∈ [0,1], and with the assumption that
+the probability is conserved we have
+\begin{equation}
+\,p(y)\,dy = \exp(−y)\,dy = \,dx,
+\end{equation}
+
+which yields after integration
+\begin{equation}
+\,x(y) = P(y) =\int_{0}^{y}\exp{-y'}dy'=1-\exp{-y}
+\end{equation}
+
+or
+\begin{equation}
+\,y(x) = −\ln(1−x).
+\end{equation}
+This gives us the new random variable y in the domain $y ∈ [0,\infty)$ determined through the
+random variable x ∈ [0,1] generated by functions like random().
+This means that if we can factor out exp(−y) from an integrand we may have
+\begin{equation}
+I =\int_{0}^{\infty}F(y)dy = \int_{0}^{\infty}\exp(−y)G(y)\,dy
+\end{equation}
+which can be rewritten as
+\begin{equation}
+ \int_{0}^{\infty}\exp(−y)G(y)\,dy = \int_{0}^{1}G(y(x))\,dx \approx \frac{1}{N}\sum_{1}^{N}G(y(x_i))
+\end{equation}
+where$ x_i$ is a random number in the interval [0,1].
+
+\section{Discussion on Methods and Results}
+\paragraph{Gaussian Legendre quadrature}The given problem was attempted with gaussian Legendre quadrature, using Legendre polynomials. In cartesian coordinates we have an integral with symmetric integration points, as the domain of Legendre polynomials, which are defined in $[-1,1]$. Since integration domain goes from $-\infty$ to $+\infty$, the integral in cartesian coordinates reads:\begin{equation} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-4(
+\sqrt{x_1^2+y_1^2+z_1^2}+ \sqrt{x_2^2+y_2^2+z_2^2})}\frac{dx_1dx_2dy_1dy_2dz_1dz_2}{\sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}}
+\end{equation}
+Since the function is of format  $e^{-4(r_1+r_2)}$,  the function is more or less zero after certain point, so the domain where the integral gets significant contributes is limited. 
+So by simple calculation the integral limit are chosen close to the lamda values (eigen values)  of the function where the function is closer to zero.
+Integral points of$[-5,5]$ were chosen after simple calculation with different lamda values.
+The code also tests the points with the denominator smaller than $10^{-10}$ inside the region
+\\
+ The function was also run with different integration points form 10 to 25 . So Python code was developed using the function \cite{book3} \texttt{gauleg} defined in the library \texttt{lib.h} we have computed the weight function and we have estimated the integral as $I=  \sum_{k=1}^N w_k[x_k] f[x_k]$ 
+. The results are provided below at table of Figure 1:
+
+As we can see this method is not so satisfactory and  the value of integral can vary a lot changing the number of integration points in an unpredictable way within given integral limits.Also Adding more points actually doesn't seem to improve the result.
+Execution  time for this program is significant as it  requires a lot of calculations in particularly 6 nested loop, which means that we have to do, with $N$ the number of integration points, $N^6$ iterations and each iteration involves around 40 operations.
+\\
+So it can be said  that this method is not suitable for multidimensional integrals.
+\paragraph{Laguerre}Next Gaussian quadrature with a mix of Legendre and Laguerre polynomials were used. Our integral is now given by 
+
+\begin{equation}
+\int_{0}^{\infty} r_1^2dr_1\int_{0}^{\infty} r_2^2dr_2\int_{0}^{\pi}d\cos{\theta_1}\int_{0}^{\pi}d\cos{\theta_2}\int_{0}^{2\pi} d\phi_1\int_{0}^{2\pi} d\phi_2\frac{exp{-2\alpha({r_1+r_2})}}{r_{12}}
+\end{equation}
+with $cos(\alpha)=cos(\theta_1)cos(\theta_2)+sin(\theta_1)sin(\theta_2)cos(\phi_1-\phi_2)$. Being the Laguerre polynomial defined in the interval $[0,+\infty]$ . They are used for the variables $r_1$ and $r_2$ and w the Legendre polynomials are used for the angles. 
+\\
+This method converges better towards the exact result  and result accurate to the second leading digit was obtained with  $N=20$  onwards.
+It was observed that as the value of denominator in the function is set too low , the function value gave unrealistic result. So this method is more dependant on the epsilon value which is used for comparison.
+ This method seemed to be more stable than the previous one as it is more consistent . So even if this method is not so precise at least it seems to be more trustworthy. 
+
+Both Gauss Legendre and Lagaurre methods were tried with parallelisation using package 'Numba' from python because without parallelisation it was not possible to get results for n$>$15 in reasonble amount of time.
+when using Jupyter and Anaconda , there were issues when parallelisation was attempted with Process from 'multiprocessing ' package in Python .
+But it worked with PyCharm for N$<$100 . But for values of N$>$100 it did not work. 
+But jit from 'Numba'was worked on both so it was used and it can be seen that both methods consumed almost similar time with parallelisation 
+
+ To sum up and compare the different results of the two algorithm we show a table of the computed values and plots below:
+\begin{center}
+
+\begin{figure}[hbt!]
+  \includegraphics[width=\linewidth]{tablegauss.png}
+  \caption{Gaussian Methods Result}
+  \label{fig:MCrelerr}
+\end{figure}
+\end{center}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{plotgaussallrelerror.png}
+  \caption{Gaussian methods- N vs Relative error}
+  \label{fig:jacobialg}
+\end{figure}
+
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{plotgaussallexetime.png}
+  \caption{Gaussian methods- N vs exe time with Parallel processing}
+  \label{fig:jacobialg}
+\end{figure}
+
+\paragraph{Monte Carlo} For the final method , Monte carlo simulation in brute force approach and an improved version were used . In The first- Monte carlo brute force method , the uniform distribution was used to get random points over a fixed interval;The limits were chosen as the lamda(eigen) values as  in the same way for the Gaussian-Legendre quadrature, namely $(-5,5)$.
+\\ 
+For second improvised method ,  the integral was transformed to spherical coordinates and  a change of variables for the radial coordinate to make it cover all the range from 0 to infinity.The mapping function $y(x)=-ln(1-x)$ was used.
+\\Importance sampling was used with the function $ p(x) = e^{-4x}$  as the new probability function which simplified a lot  integrand function as well, where x is a number generated by a random() function.The integrand function  was multiplied with the proper jacobian value.
+Hence in this improved method,it has been possible to sample it mainly where the given function values were bigger ( where the importance sampling function value were bigger), instead of collecting a lot of points in regions where it is basically 0.
+
+The results and plots are provided below:
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{tableMCresult.png}
+  \caption{Monte Carlo methods- Exact Result vs Calulated Results}
+  \label{fig:MCrelerr}
+\end{figure}
+
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{tableMCrelerr.png}
+  \caption{Monte Carlo methods- N vs relative error}
+  \label{fig:MCrelerr}
+\end{figure}
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{plotMCallrelativeerror.png}
+  \caption{Monte Carlo methods- N vs relative error}
+  \label{fig:MCrelerr}
+\end{figure}
+\newpage
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{tableMCsigma.png}
+  \caption{Monte Carlo methods- N vs Sigma Value}
+  \label{fig:MCrelerr}
+\end{figure}
+
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{plotMCallsigma.png}
+  \caption{Monte Carlo methods- N vs Sigma Value}
+  \label{fig:MCrelerr}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{tableMCtime.png}
+  \caption{Monte Carlo methods- N vs Exe time}
+  \label{fig:MCtime}
+\end{figure}
+
+
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{plotMCallexetime.png}
+  \caption{Monte Carlo methods- N vs Exe time}
+  \label{fig:MCtime}
+\end{figure}
+
+As it is observed  the variance decreases as we increase the number of integration points, as expected. However the brute force integral requires a lot of points for its value to get close to the analytical one.
+The method with important sampling, is almost exact for all the choices of number of integration points , with significantly lower $\sigma$. The importance sampling allows to compute the integral with really few points much less then the Gaussian quadrature and the brute force Monte Carlo. 
+
+\paragraph{Parallelization} The last part of the  project was to implement parallelization in the  code . The 'Numba' library  was used  for this purpose.With minimum trivial changes to the code  considerable speed up was achieved as shown.
+When tried to use the POOL, PROCESS and THREAD from  multiprocessing package in Python in Jupyter notebook , unreasonable hangs were observed and hence switched over to PYcharm.Multiprocessing worked in PYcharm environment for N $<$100. 
+But the package Numba worked well in both environments without any problem 
+\\
+As we can see execution  times are considerably decreased after the parallelization. This could be due to the fact that we set up the parallel calculation in a way that avoids data races.It could not be confirmed if  the time of execution is  linearly correlated with the number of cores
+\\
+This time analysis however showed us  that improved Monte carlo method with importance sampling is the fastest with more reliable than the brute force Monte carlo method. 
+\section{Conclusions}
+Among numerical representations, gaussian quadrature with Legendre polynomials resulted to be the less reliable method, since it depends  on the number of integration points. 
+Laguerre polynomials gave much more precise  and consistant results 
+\\ Monte Carlo methods are faster but brute force Monte Carlo is less accurate with limited integration intervals. 
+Finally, a change of coordinates and the implementation of importance sampling with exponential integration increased the precision of our results and with parallelisation results were achieved in quicker time.
+
+\section{Acknowledgement}
+I would like to thank all the Lab instructors in this course who answered all queries very patiently and clarified all doubts.
+
+\section{Critique}
+It can be attmepted to present video lectures where huge  derivations and calculations are involved . it can help us to rerun the video and understand them better at our own pace.
+\\ The literature and references for a particular project are scattered throughout lecture notes and slides which can be a challenge to search . If these are presented along with the project description it can be easier
+\\ From previous experience of lab guidance,common doubts can be cleared for all participants which will save lot of time and energy for the Instructors and give the participants reasonable waiting time.
+\medskip
+ 
+\begin{thebibliography}{9}
+\bibitem{book1} 
+C.Henry Edwards, David E,Penny. 
+\textit{Calculus, Early Transdentals- parts of Chapter 5 , 13}. 
+Pearon, 2007.
+
+\bibitem{book2} 
+Morten Hjorth-Jensen:,
+\\\texttt{\url{http://compphysics.github.io/ComputationalPhysics/doc/pub/integrate/html/integrate-reveal.html}}
+
+\bibitem{book3}
+Morten Hjorth-Jensen:,
+\\\texttt{\url{https://github.com/CompPhysics/ComputationalPhysics/tree/master/doc/Projects/2019/Project3/CodeExamples}}
+
+\bibitem{book4} 
+Morten Hjorth-Jensen:,
+\\\texttt{\url{http://compphysics.github.io/ComputationalPhysics/doc/pub/mcint/html/mcint-reveal.html}}
+
+
+\end{thebibliography}
+\end{document}
