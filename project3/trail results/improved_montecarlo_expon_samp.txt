@@ -1,0 +1,1 @@
+n 	 a	  MC_expon_samp_result	 exact_result	 realtive error	 sigma	 exe time_MC_expon samp

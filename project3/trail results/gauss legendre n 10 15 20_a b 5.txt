@@ -1,0 +1,4 @@
+n 	 a	  b	  legrendre_resutlt	 exact_result	 realtive error	 exe time_legrendre
+10	-5	5	0.011165	0.192570	0.942023	10.018248
+15	-5	5	0.236879	0.192570	0.230093	116.689201
+20	-5	5	0.096789	0.192570	0.497385	709.929195

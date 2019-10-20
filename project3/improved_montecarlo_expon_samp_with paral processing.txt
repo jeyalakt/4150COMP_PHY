@@ -1,0 +1,4 @@
+n 	 a	  MC_expon_samp_result	 exact_result	 realtive error	 sigma	 exe time_MC_expon samp jit	 exe time_MC_expon samp without jit
+100000	-1	0.190309	0.19257	0.011745	0.003044	0.454826	1.064151
+1000000	-1	0.193745	0.19257	0.006099	0.001043	3.431869	10.466009
+10000000	-1	0.192702	0.19257	0.000686	0.00032	35.43829	107.749882

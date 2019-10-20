@@ -1,0 +1,2 @@
+n 	 a	  b	  MCbrute_resutlt	 exact_result	 realtive error	 sigma	 exe time_MC_bruteforce
+100000	-5	5	0.097428	0.192570	0.494066	
