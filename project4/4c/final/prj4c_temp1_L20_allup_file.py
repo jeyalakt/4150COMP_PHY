@@ -1,13 +1,10 @@
 from numpy import *
-import time as time
-import sys
-import matplotlib.pyplot as plt
-from scipy.stats import uniform
 from random import random
 from random import seed
 from numba import jit
 outf = open('prj4c_temp24_L20_allup.txt', 'w+')
-outf.write("n \t\t spin_accpt\t\tEcalc\t\t Mabs_calc\n")
+outf.write("{:20s}{:20s}{:24s}{:24s}{:20s}{:20s}{:20s}" .format("n","spin_accpt","Ecalc"," Mabs_calc"))
+outf.write("\n")
 outf.close()
 
 @jit
@@ -135,11 +132,11 @@ def output(n_spin, mcs, temp, average, accept):
     """
     outf = open('prj4c_temp24_L20_allup.txt', 'a')
     outf.write(str(mcs))
-    outf.write("\t\t")
+    outf.write("\t")
     outf.write(str(accept))
-    outf.write("\t\t")
+    outf.write("\t")
     outf.write("{:.6f}".format(Eaverage))
-    outf.write("\t\t")
+    outf.write("\t")
     #outf.write("{:.6f}".format(Evariance / temp / temp))
     #outf.write("\t\t")
     #outf.write("{:.6f}".format(Mvariance / temp))

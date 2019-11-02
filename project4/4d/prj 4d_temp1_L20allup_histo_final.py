@@ -1,8 +1,4 @@
 from numpy import *
-import time as time
-import sys
-import matplotlib.pyplot as plt
-from scipy.stats import uniform
 from random import random
 from random import seed
 from numba import jit
@@ -83,8 +79,6 @@ def main():
     for i in range (0,5):
         average[i]=0
     E, M, lat = init(n_spin,E,M,lat)
-    initial_Eaverage = E / n_spin / n_spin
-    initial_Mabsaverage = fabs(M) / n_spin / n_spin
     #print("lat after init", lat)
     accept=0
     steadystecyle=5000
