@@ -1,0 +1,2 @@
+n 		 spin_accpt		Ecalc		 CV-calc		 sus_calc		 Mabs_calc
+5000		547743		-489.574400		527.752997		3428.516930		173.102800

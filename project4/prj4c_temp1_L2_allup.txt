@@ -1,0 +1,2 @@
+n 		 Ecalc		 CV-calc		 sus_calc		 Mabs_calc
+[10000]		-7.986400		0.108615		0.012781		3.995600
