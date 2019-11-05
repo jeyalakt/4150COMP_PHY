@@ -6,7 +6,7 @@ from scipy.stats import uniform
 from random import random
 from random import seed
 from numba import jit
-outf = open('prj4c_temp24_L20_ranspin.txt', 'w+')
+outf = open('prj4c_temp24_L20_ranspin1.txt', 'w+')
 outf.write("n \t\t spin_accpt\t\tEcalc\t\t Mabs_calc\n")
 outf.close()
 
@@ -132,7 +132,7 @@ def output(n_spin, mcs, temp, average, accept):
     print("Diff_chi", Diff_Chi)
     print("Diff_absM", Diff_absM)
     """
-    outf = open('prj4c_temp24_L20_ranspin.txt', 'a')
+    outf = open('prj4c_temp24_L20_ranspin1.txt', 'a')
     outf.write(str(mcs))
     outf.write("\t\t")
     outf.write(str(accept))
@@ -149,10 +149,10 @@ def output(n_spin, mcs, temp, average, accept):
 
 
 #n=linspace(1 , 100, 1)
-for i in range (1,100000,10):
+for i in range (1,25000,20):
     if __name__ == "__main__":
         mcs = i
-        print("mcs",mcs)
+        #print("mcs",mcs)
         main()
 
 

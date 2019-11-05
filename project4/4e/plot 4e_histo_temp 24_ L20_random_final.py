@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-filename = 'C:/Users/Bruker/4150COMP_PHY/project4/4d/prj4d_temp24_L20_ranspin_final_100000.txt'
+filename = 'C:/Users/Bruker/4150COMP_PHY/project4/4d/prj4e_temp2_26_01_L80_ranspin_mcs10000.txt'
 n = 1
 # print('filename', filename)
 with open(filename) as f:

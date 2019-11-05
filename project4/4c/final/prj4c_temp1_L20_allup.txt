@@ -1,0 +1,1 @@
+n                   spin_accpt          Ecalc                Mabs_calc          
