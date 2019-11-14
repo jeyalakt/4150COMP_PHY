@@ -2,7 +2,7 @@ from numpy import *
 from random import random
 from random import seed
 from numba import jit
-outf = open('prj4c_temp1_L20_allup11.txt', 'w+')
+outf = open('prj4c_temp1_L20_allupbbb.txt', 'w+')
 outf.write("{:20s}{:20s}{:20s}{:20s}" .format("n","spin_accpt","Ecalc"," Mabs_calc"))
 outf.write("\n")
 outf.close()
@@ -130,7 +130,7 @@ def output(n_spin, mcs, temp, average, accept):
     print("Diff_chi", Diff_Chi)
     print("Diff_absM", Diff_absM)
     """
-    outf = open('prj4c_temp1_L20_allup11.txt', 'a')
+    outf = open('prj4c_temp1_L20_allupbbb.txt', 'a')
     outf.write(str(mcs))
     outf.write("\t")
     outf.write(str(accept))
@@ -150,7 +150,7 @@ def output(n_spin, mcs, temp, average, accept):
 for i in range (1,25000,20):
     if __name__ == "__main__":
         mcs = i
-        print("mcs",mcs)
+        #print("mcs",mcs)
         main()
 
 

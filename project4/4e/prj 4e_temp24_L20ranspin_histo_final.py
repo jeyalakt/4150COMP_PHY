@@ -1,7 +1,6 @@
 from numpy import *
 import time as time
 from random import random
-from random import seed
 from numba import jit
 import multiprocessing
 p=multiprocessing.cpu_count()
@@ -174,6 +173,7 @@ def out(n_spin,temp,average,exetime):
 
 
 n=[10000]
+#n=[100]
 for i in range (len(n)):
     if __name__ == "__main__":
         mcs = n[i]

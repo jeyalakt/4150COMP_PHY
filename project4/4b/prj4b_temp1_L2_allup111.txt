@@ -1,0 +1,2 @@
+n 		 Eexact		Ecalc		 CV_exact		CV-calc		 sus_exact		sus_calc		 Mabs_exact		Mabs_calc
+100		-7.983928		-8.000000		0.128329		0.000000		0.016043		0.000000		3.994643		4.000000

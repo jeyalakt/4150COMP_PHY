@@ -8,7 +8,7 @@ from random import seed
 from numba import jit
 
 
-outf = open('prj4b_temp1_L2_allup.txt', 'w+')
+outf = open('prj4b_temp1_L2_allup111.txt', 'w+')
 outf.write("n \t\t Eexact\t\tEcalc\t\t CV_exact\t\tCV-calc\t\t sus_exact\t\tsus_calc\t\t Mabs_exact\t\tMabs_calc\n")
 
 outf.close()
@@ -148,7 +148,7 @@ def main():
     print("Diff_CV", Diff_CV)
     print("Diff_chi", Diff_Chi)
     print("Diff_absM", Diff_absM)
-    outf = open('prj4b_temp1_L2_allup.txt', 'a')
+    outf = open('prj4b_temp1_L2_allup111.txt', 'a')
     outf.write(str(mcs))
     outf.write("\t\t")
     outf.write("{:.6f}".format(E_exact))
@@ -170,6 +170,8 @@ def main():
     outf.close()
 
 n=[100,1000,10000, 100000,1000000]
+
+#n=[100]
 for i in range (len(n)):
     if __name__ == "__main__":
         mcs = n[i]

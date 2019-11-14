@@ -1,8 +1,7 @@
 from numpy import *
 from random import random
-from random import seed
 from numba import jit
-outf = open('prj4d_temp1_L20_allupspin.txt', 'w+')
+outf = open('prj4d_temp1_L20_allupspinbbb.txt', 'w+')
 outf.write("energy \n")
 outf.close()
 
@@ -101,13 +100,14 @@ def out(n_spin, E):
     # norm2 = 1.0 / (n_n_spins * n_n_spins); // divide
     norm2 = 1.0;
     Energy=E*norm2
-    outf = open('prj4d_temp1_L20_allupspin.txt', 'a')
+    outf = open('prj4d_temp1_L20_allupspinbbb.txt', 'a')
     outf.write("{:.6f}".format(Energy))
     outf.write("\n")
     outf.close()
 
 
-n=[100000]
+#n=[100000]
+n=[10000]
 for i in range (len(n)):
     if __name__ == "__main__":
         mcs = n[i]
