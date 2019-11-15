@@ -80,8 +80,6 @@ def main():
     for i in range (0,5):
         average[i]=0
     E, M, lat = init(n_spin,E,M,lat)
-    initial_Eaverage = E / n_spin / n_spin
-    initial_Mabsaverage = fabs(M) / n_spin / n_spin
     #print("lat after init", lat)
     accept=0
     for cycles in range (1,mcs+1):
@@ -96,18 +94,18 @@ def main():
     output(n_spin, mcs, temp, average, accept)
 def output(n_spin, mcs, temp, average, accept):
     norm = 1 / mcs
-    # norm2 = 1.0 / (n_n_spins * n_n_spins); // divide
-    norm2 = 1.0;
-    T = temp;
-    Eaverage = average[0] * norm;
+    # norm2 = 1.0 / (n_spins * n_spins); // divide
+    norm2 = 1.0
+    T = temp
+    Eaverage = average[0] * norm
     #print("eavg",Eaverage)
-    #E2average = average[1] * norm;
+    #E2average = average[1] * norm
     #print("e2avg",E2average)
-    Maverage = average[2] * norm;
-    #M2average = average[3] * norm;
-    Mabsaverage = average[4] * norm;
-    #Evariance = (E2average - Eaverage * Eaverage) * norm2;
-    #Mvariance = (M2average - Mabsaverage * Mabsaverage) * norm2;
+    Maverage = average[2] * norm
+    #M2average = average[3] * norm
+    Mabsaverage = average[4] * norm
+    #Evariance = (E2average - Eaverage * Eaverage) * norm2
+    #Mvariance = (M2average - Mabsaverage * Mabsaverage) * norm2
     #print("Evariance", Evariance)
     #print("Mvariance", Mvariance)
     #print(Mabsaverage)

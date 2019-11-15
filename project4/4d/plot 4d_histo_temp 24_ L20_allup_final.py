@@ -12,7 +12,7 @@ with open(filename) as f:
     plt.hist(y)
     plt.legend(loc='upper right')
     plt.xlabel(r"energy bin")
-    plt.ylabel(r"  energy")
+    plt.ylabel(r" number of energy")
     plt.title(r"  temp= 2.4, L =20, allup_spin")
     plt.grid()
     plt.savefig(filename.replace(".txt", ".png"))

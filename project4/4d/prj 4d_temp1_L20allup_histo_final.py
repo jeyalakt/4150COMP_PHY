@@ -4,7 +4,8 @@ from numba import jit
 outf = open('prj4d_temp1_L20_allupspinbbb.txt', 'w+')
 outf.write("energy \n")
 outf.close()
-
+# steady state cycle assumed 5000 and then varied from 15 % of mcs
+# n_spin to be mentioned in 2 places
 @jit
 def periodic(curr,max,change):
     return int (curr+max+change)%max
@@ -80,25 +81,26 @@ def main():
     E, M, lat = init(n_spin,E,M,lat)
     #print("lat after init", lat)
     accept=0
-    steadystecyle=5000
+    #steadystecyle=mcs*0.15
+    steadystecyle= 5000
     for cycles in range (1,mcs+1):
         E,M=Metropolis(n_spin, lat, E, M, w)
         if cycles>steadystecyle:
             out(n_spin, E)
-            meanE += E * norm2;
-            meanE2 += E * E * norm2 * norm2;
-    norm = 1 / ((double)(mcs - steadystecyle + 1));
-    meanE *= norm;
-    meanE2 *= norm;
+            meanE += E * norm2
+            meanE2 += E * E * norm2 * norm2
+    norm = 1 / ((double)(mcs - steadystecyle + 1))
+    meanE *= norm
+    meanE2 *= norm
     print("mean E per spin:   " , meanE)
     print("mean E2 per spin:   ", meanE2)
-    Evariance = meanE2 - meanE * meanE;
+    Evariance = meanE2 - meanE * meanE
     print("evar",Evariance)
 
 def out(n_spin, E):
     norm = 1 / mcs
-    # norm2 = 1.0 / (n_n_spins * n_n_spins); // divide
-    norm2 = 1.0;
+    # norm2 = 1.0 / (n_spins * n_spins); // divide
+    norm2 = 1.0
     Energy=E*norm2
     outf = open('prj4d_temp1_L20_allupspinbbb.txt', 'a')
     outf.write("{:.6f}".format(Energy))

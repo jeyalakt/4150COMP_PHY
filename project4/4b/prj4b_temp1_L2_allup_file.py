@@ -73,7 +73,6 @@ def Metropolis(n_spin, lat, E, M, w):
 def main():
     n_spin = 2
     temp = 1
-    idum = -1
     a=(n_spin,n_spin)
     lat=zeros(a)
     E=0
@@ -104,26 +103,26 @@ def main():
     norm = 1. / mcs
     print("mcs",mcs)
     # norm2 = 1.0 / (n_n_spins * n_n_spins); // divide
-    norm2 = 1.0;
-    T = temp;
-    Eaverage = average[0] * norm;
+    norm2 = 1.0
+    T = temp
+    Eaverage = average[0] * norm
     #print("eavg",Eaverage)
-    E2average = average[1] * norm;
+    E2average = average[1] * norm
     #print("e2avg",E2average)
-    Maverage = average[2] * norm;
-    M2average = average[3] * norm;
-    Mabsaverage = average[4] * norm;
-    Evariance = (E2average - Eaverage * Eaverage) * norm2;
-    Mvariance = (M2average - Mabsaverage * Mabsaverage) * norm2;
+    Maverage = average[2] * norm
+    M2average = average[3] * norm
+    Mabsaverage = average[4] * norm
+    Evariance = (E2average - Eaverage * Eaverage) * norm2
+    Mvariance = (M2average - Mabsaverage * Mabsaverage) * norm2
     #print("Evariance", Evariance)
     #print("Mvariance", Mvariance)
     #print(Mabsaverage)
+
+
     # Exact results for T = 1.0 (J = 1):
 
     cosh_fac = (3.0 + cosh(8 / T))
-    # cosh_fac = (1.0+(3.0*cosh(8/T)))
     E_exact = -8.0 * sinh(8 / T) / cosh_fac * norm2
-    # E_exact = 8.0*sinh(8/T)/cosh_fac*norm2
     Cv_exact = (8.0 / T) * (8.0 / T) * (1.0 + 3 * cosh(8 / T)) / (cosh_fac * cosh_fac) * norm2
     Suscept_exact = 1 / T * (12.0 + 8.0 * exp(8.0 / T) + 8 * cosh(8.0 / T)) / (cosh_fac * cosh_fac) * norm2
     absM_exact = (2.0 * exp(8.0 / T) + 4.0) / cosh_fac * norm2

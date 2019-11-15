@@ -1,14 +1,12 @@
 from numpy import *
-import time as time
-import sys
-import matplotlib.pyplot as plt
-from scipy.stats import uniform
 from random import random
 from random import seed
 from numba import jit
 outf = open('prj4d_temp1_L20_ranspin.txt', 'w+')
 outf.write("energy \n")
 outf.close()
+# steady state cycle assumed 5000 and then varied from 15% of mcs
+# n_spin to be mentioned in 2 places
 
 @jit
 def periodic(curr,max,change):
@@ -86,29 +84,28 @@ def main():
     for i in range (0,5):
         average[i]=0
     E, M, lat = init(n_spin,E,M,lat)
-    initial_Eaverage = E / n_spin / n_spin
-    initial_Mabsaverage = fabs(M) / n_spin / n_spin
     #print("lat after init", lat)
     accept=0
     steadystecyle=5000
+    #steadystecyle =mcs*0.15
     for cycles in range (1,mcs+1):
         E,M=Metropolis(n_spin, lat, E, M, w)
         if cycles>steadystecyle:
             out(n_spin, E)
-            meanE += E * norm2;
-            meanE2 += E * E * norm2 * norm2;
-    norm = 1 / ((double)(mcs - steadystecyle + 1));
-    meanE *= norm;
-    meanE2 *= norm;
+            meanE += E * norm2
+            meanE2 += E * E * norm2 * norm2
+    norm = 1 / ((double)(mcs - steadystecyle + 1))
+    meanE *= norm
+    meanE2 *= norm
     print("mean E per spin:   " , meanE)
     print("mean E2 per spin:   ", meanE2)
-    Evariance = meanE2 - meanE * meanE;
+    Evariance = meanE2 - meanE * meanE
     print("evar",Evariance)
 
 def out(n_spin, E):
     norm = 1 / mcs
     # norm2 = 1.0 / (n_n_spins * n_n_spins); // divide
-    norm2 = 1.0;
+    norm2 = 1.0
     Energy=E*norm2
     outf = open('prj4d_temp1_L20_ranspin.txt', 'a')
     outf.write("{:.6f}".format(Energy))
