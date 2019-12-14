@@ -79,11 +79,11 @@ for i in range(N-1):
     x[i+1] = x[i] + vx[i]*dt + 0.5*ax[i]*dt**2
     y[i+1] = y[i] + vy[i]*dt + 0.5*ay[i]*dt**2
     A_x, A_y,r= Acc_Grav_earth(x[i+1], y[i+1])
-    #A_x1, A_y1, r1 = Acc_Grav_earth_jup1(x[i + 1], y[i + 1])
-    #ax[i+1] = A_x+A_x1
-    #ay[i+1] =  A_y+A_y1
-    ax[i + 1] = A_x
-    ay[i + 1] = A_y
+    A_x1, A_y1, r1 = Acc_Grav_earth_jup1(x[i + 1], y[i + 1])
+    ax[i+1] = A_x+A_x1
+    ay[i+1] =  A_y+A_y1
+    #ax[i + 1] = A_x
+    #ay[i + 1] = A_y
     #ax[i + 1] = A_x1
     #ay[i + 1] = A_y1
     vx[i+1] = vx[i] + 0.5*dt*ax[i] +  0.5*dt*ax[i+1]
@@ -92,14 +92,14 @@ for i in range(N-1):
 
     xj[i + 1] = xj[i] + vxj[i] * dt + 0.5 * axj[i] * dt ** 2
     yj[i + 1] = yj[i] + vyj[i] * dt + 0.5 * ayj[i] * dt ** 2
-    A_xj, A_yj, rj = Acc_Grav_jup(xj[i + 1], yj[i + 1])
-    #A_x1, A_y1, r1 = Acc_Grav_earth_jup1(x[i + 1], y[i + 1])
-    # ax[i+1] = A_x+A_x1
-    # ay[i+1] =  A_y+A_y1
-    axj[i + 1] = A_xj
-    ayj[i + 1] = A_yj
-    #axj[i + 1] = A_x1
-    #ayj[i + 1] = A_y1
+    #A_xj, A_yj, rj = Acc_Grav_jup(xj[i + 1], yj[i + 1])
+    A_x1, A_y1, r1 = Acc_Grav_earth_jup1(x[i + 1], y[i + 1])
+    #ax[i+1] = A_x+A_x1
+    #ay[i+1] =  A_y+A_y1
+    #axj[i + 1] = A_xj
+    #ayj[i + 1] = A_yj
+    axj[i + 1] = A_x1
+    ayj[i + 1] = A_y1
     vxj[i + 1] = vxj[i] + 0.5 * dt * axj[i] + 0.5 * dt * axj[i + 1]
     vyj[i + 1] = vyj[i] + 0.5 * dt * ayj[i] + 0.5 * dt * ayj[i + 1]
 
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     plt.xlabel("x[AU]")
     plt.ylabel("y[AU]")
     plt.legend(loc='upper right')
-    plt.title("sun-earth-jupitereff(X10 mass)model")
+    plt.title("sun-earth-jupitereff(X1000 mass)model")
     scatter([0], [0], s=20, color='yellow')
-    plt.savefig("sun-earth-jupitereff(X10 mass)model.png")
+    plt.savefig("sun-earth-jupitereff(X1000mass)model.png")
     plt.show()
