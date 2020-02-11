@@ -6,7 +6,7 @@ from pylab import *
 from planet import Planet
 
 #outf = open('prj5a_euler100.txt', 'w+')
-outf = open('prj5e_ear_mars_classtrial.txt', 'w+')
+outf = open('prj5e_ear_mars_classtrial_1.txt', 'w+')
 outf.write(" x\t\ty\n")
 outf.close()
 AU = 1.5E11  # 1 AU in Meters
@@ -104,7 +104,7 @@ for obj in list:
         vx[i+1] = vx[i] + 0.5*dt*ax[i] +  0.5*dt*ax[i+1]
         vy[i+1] = vy[i] + 0.5*dt*ay[i] +  0.5*dt*ay[i+1]
 
-        outf = open('prj5e_ear_mars_classtrial.txt', 'a')
+        outf = open('prj5e_ear_mars_classtrial_1.txt', 'a')
         outf.write("{:.6f}".format(x[i]))
         outf.write("\t\t")
         outf.write("{:.6f}".format(y[i]))

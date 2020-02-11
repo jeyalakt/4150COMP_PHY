@@ -1,0 +1,276 @@
+no.of cities
+
+5
+
+
+minimum distances
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+7
+
+
+minimum distances
+8357.310
+8425.370
+8173.130
+7301.420
+8861.790
+9030.330
+8357.310
+best val- i.e shortest dist 
+7301.420
+worst val- i.e longest dist 
+9030.330
+mean
+8358.094
+std.dev
+515.601
+
+no.of cities
+
+8
+
+
+minimum distances
+9307.440
+10481.900
+10372.640
+8546.330
+11063.350
+11152.350
+10479.330
+9307.440
+best val- i.e shortest dist 
+8546.330
+worst val- i.e longest dist 
+11152.350
+mean
+10088.847
+std.dev
+870.973
+
+no.of cities
+
+10
+
+
+minimum distances
+13125.680
+12203.100
+13849.600
+13009.090
+12031.360
+13379.270
+14315.230
+13290.890
+14243.790
+13125.680
+best val- i.e shortest dist 
+12031.360
+worst val- i.e longest dist 
+14315.230
+mean
+13257.369
+std.dev
+719.008
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+5894.390
+7461.420
+6653.360
+6917.110
+best val- i.e shortest dist 
+5894.390
+worst val- i.e longest dist 
+7461.420
+mean
+6768.678
+std.dev
+510.222
+
+no.of cities
+
+5
+
+
+minimum distances
+6917.110
+6814.160
+4983.380
+5894.390
+6917.110
+best val- i.e shortest dist 
+4983.380
+worst val- i.e longest dist 
+6917.110
+mean
+6305.230
+std.dev
+764.707
+

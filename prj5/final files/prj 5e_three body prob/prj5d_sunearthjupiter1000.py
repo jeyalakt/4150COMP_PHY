@@ -4,15 +4,12 @@ import numpy as np
 import time
 from pylab import *
 #outf = open('prj5a_euler100.txt', 'w+')
-outf = open('prj5e_jupeff_1000.txt', 'w+')
+outf = open('prj5e_jupeff_1000_1.txt', 'w+')
 outf.write(" x\t\ty\n")
 outf.close()
 AU = 1.5E11  # 1 AU in Meters
 sun_mass = 2E30  # Sun mass in kg
 G = 4 * np.pi ** 2
-#dt = 0.001
-# dt is final time % by N 1 % 1000 , final = 1 ,dt=0.001
-#dt is final time % by N 1 % 1000 , final = 10 , dt=0.01
 N = int(1E4)
 yr=10
 dt=yr/N
@@ -21,7 +18,7 @@ m_sun = 1
 m_earth=3e-6 # if m_sun=1
 #m_earth=6e24 # in  kg
 #m_jupiter=2e27
-m_jupiter=2e3*1000 #if m_sun=1 # 2e4 when 10 times
+m_jupiter=2e3*1000 #if m_sun=1 # 2e4 when 10 times *1000 when 1000 times
 
 x = np.zeros(N)
 y = np.zeros(N)
@@ -39,16 +36,10 @@ x[0] = 1
 xj[0]=5.2
 y[0] = 0
 yj[0]=0
-#x[0]=5.2 -0 , 0-0 jupiter x and y minus earth x, y
-#x2[0]=5.2
-#y2[0]=0
 vx[0] = 0
 vy[0] = (2.0 * (np.pi))
 vxj[0] = 0
 vyj[0] = (2.0 * (np.pi))*(5.2)
-#vy2[0]=2.0 * np.pi- 2.0 * np.pi/np.sqrt(5.2)
-#vx2[0]=0
-#vy2[0]=2.0 * np.pi/np.sqrt(5.2)
 
 t1 = time.time()
 def Acc_Grav_earth(x,y):
@@ -92,7 +83,7 @@ for i in range(N-1):
 
     xj[i + 1] = xj[i] + vxj[i] * dt + 0.5 * axj[i] * dt ** 2
     yj[i + 1] = yj[i] + vyj[i] * dt + 0.5 * ayj[i] * dt ** 2
-    #A_xj, A_yj, rj = Acc_Grav_jup(xj[i + 1], yj[i + 1])
+    A_xj, A_yj, rj = Acc_Grav_jup(xj[i + 1], yj[i + 1])
     A_x1, A_y1, r1 = Acc_Grav_earth_jup1(x[i + 1], y[i + 1])
     #ax[i+1] = A_x+A_x1
     #ay[i+1] =  A_y+A_y1
@@ -100,10 +91,12 @@ for i in range(N-1):
     #ayj[i + 1] = A_yj
     axj[i + 1] = A_x1
     ayj[i + 1] = A_y1
+    #axj[i + 1] = A_x1+A_xj
+    #ayj[i + 1] = A_y1+A_yj
     vxj[i + 1] = vxj[i] + 0.5 * dt * axj[i] + 0.5 * dt * axj[i + 1]
     vyj[i + 1] = vyj[i] + 0.5 * dt * ayj[i] + 0.5 * dt * ayj[i + 1]
 
-    outf = open('prj5e_jupeff_1000.txt', 'a')
+    outf = open('prj5e_jupeff_1000_1.txt', 'a')
     outf.write("{:.6f}".format(x[i]))
     outf.write("\t\t")
     outf.write("{:.6f}".format(y[i]))
